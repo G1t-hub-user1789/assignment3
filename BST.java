@@ -2,7 +2,6 @@ import java.util.Iterator;
 import java.util.Stack;
 
 public class BST<K extends Comparable<K>, V> implements Iterable<BST<K, V>.Node> {
-
     public class Node {
         K key;
         V value;
@@ -23,7 +22,7 @@ public class BST<K extends Comparable<K>, V> implements Iterable<BST<K, V>.Node>
     }
 
     private Node root;
-    private int size = 0;
+    private int size;
 
     public void put(K key, V value) {
         if (root == null) {
@@ -31,6 +30,7 @@ public class BST<K extends Comparable<K>, V> implements Iterable<BST<K, V>.Node>
             size++;
             return;
         }
+
         Node current = root;
         while (true) {
             int cmp = key.compareTo(current.key);

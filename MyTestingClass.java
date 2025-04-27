@@ -27,7 +27,7 @@ public class MyTestingClass {
 
     @Override
     public String toString() {
-        return "MyTestingClass{" + "id=" + id + ", name='" + name + '\'' + '}';
+        return "MyTestingClass{id=" + id + ", name='" + name + "'}";
     }
 
     public static MyTestingClass random() {

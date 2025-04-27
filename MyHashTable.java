@@ -7,10 +7,8 @@ public class MyHashTable<K, V> {
         public HashNode(K key, V value) {
             this.key = key;
             this.value = value;
-            this.next = null;
         }
 
-        @Override
         public String toString() {
             return "{" + key + " " + value + "}";
         }
@@ -23,14 +21,12 @@ public class MyHashTable<K, V> {
     @SuppressWarnings("unchecked")
     public MyHashTable() {
         chainArray = new HashNode[M];
-        size = 0;
     }
 
     @SuppressWarnings("unchecked")
     public MyHashTable(int M) {
         this.M = M;
         chainArray = new HashNode[M];
-        size = 0;
     }
 
     private int hash(K key) {
@@ -38,8 +34,8 @@ public class MyHashTable<K, V> {
     }
 
     public void put(K key, V value) {
-        int bucketIndex = hash(key);
-        HashNode<K, V> head = chainArray[bucketIndex];
+        int index = hash(key);
+        HashNode<K, V> head = chainArray[index];
 
         while (head != null) {
             if (head.key.equals(key)) {
@@ -50,15 +46,14 @@ public class MyHashTable<K, V> {
         }
 
         size++;
-        head = chainArray[bucketIndex];
         HashNode<K, V> newNode = new HashNode<>(key, value);
-        newNode.next = head;
-        chainArray[bucketIndex] = newNode;
+        newNode.next = chainArray[index];
+        chainArray[index] = newNode;
     }
 
     public V get(K key) {
-        int bucketIndex = hash(key);
-        HashNode<K, V> head = chainArray[bucketIndex];
+        int index = hash(key);
+        HashNode<K, V> head = chainArray[index];
 
         while (head != null) {
             if (head.key.equals(key)) {
@@ -66,6 +61,7 @@ public class MyHashTable<K, V> {
             }
             head = head.next;
         }
+
         return null;
     }
 

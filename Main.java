@@ -7,19 +7,20 @@ public class Main {
             table.put(key, "Student" + i);
         }
 
+        table.printBuckets();
+        System.out.println("Total elements in HashTable: " + table.size());
+
+        System.out.println();
+
         BST<Integer, String> bst = new BST<>();
         bst.put(5, "Five");
         bst.put(3, "Three");
         bst.put(7, "Seven");
 
-        System.out.println("Size: " + bst.size());
+        System.out.println("Total elements in BST: " + bst.size());
 
-        for (var node : bst) {
+        for (BST<Integer, String>.Node node : bst) {
             System.out.println("Key: " + node.getKey() + ", Value: " + node.getValue());
         }
-
-        table.printBuckets();
-
-        System.out.println("Total elements: " + table.size());
     }
 }
